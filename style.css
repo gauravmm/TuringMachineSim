@@ -1,0 +1,208 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding:0;
+	margin:0;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+	border-bottom: thin solid gray;
+}
+a:hover {
+	background: #FFD9E4;
+	text-decoration: none;
+}
+
+
+
+.container {
+}
+
+#header {
+	position: relative;
+}
+#header>h1 {
+	display: inline-block;
+}
+#header>small {
+	display: inline-block;
+}
+
+.outputArea {
+	box-sizing:border-box;
+	padding: 5px;
+	overflow: auto;
+	width: 100%;
+	padding-right: 310px;
+}
+.controlArea {
+	position: fixed;
+	right: 0;
+	top: 0;
+
+	background: #89BFE5; /* #A1E6FF;*/
+	padding: 0px 5px;
+	width: 300px;
+	height: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.controlArea>h3 {
+	margin: 10px 0px 5px;
+}
+
+.controlArea>:last-child {
+	margin-bottom: 5px;
+}
+
+#tapeStart.tapeView {
+	margin-bottom: 14px;
+}
+
+.tapeView {
+	margin-bottom: 7px;
+	user-select: none;
+}
+
+.tapeView div {
+	display: inline-block;
+	width: 1.5em;
+	margin: 0;
+	padding: 0;
+
+	user-select: none;
+}
+
+.codeView {
+	margin: 20px 36px;
+	margin: 20px calc(4rem + 7px);
+	padding: 8px;
+
+	border: thin solid black;
+}
+
+#tapeStart>div:nth-child(8n+2),
+#tapeStart>div:nth-child(8n+3),
+#tapeStart>div:nth-child(8n+4),
+#tapeStart>div:nth-child(8n+5),
+.hlTapeCell {
+	background: #FFD9E4;
+}
+
+.tapeView:nth-child(10n+5)>div.tapeIdx,
+.tapeView:nth-child(10n+10)>div.tapeIdx {
+	background: #FFD9E4;
+	font-size: 200%;
+	font-weight: bold;
+	color:black;
+}
+
+.tapeView>div.tapeIdx {
+	display: inline-block;
+	height: 2rem;
+	height: 2rem;
+	width: 4rem;
+
+	text-align: right;
+	border: solid thin white;
+	position: relative;
+	vertical-align: top;
+	padding-right: 5px;
+
+	color: grey;
+}
+
+#tapeStart.tapeView>div.tapeCell {
+	cursor:pointer;
+}
+
+.tapeView>div.tapeCell {
+	height: 2em;
+	display: inline-block;
+	border: thin solid black;
+	vertical-align: top;
+	
+	position: relative;
+}
+
+.tapeView>div.tapeCell>div {
+	text-align: center;
+	height: 1em;
+	position: absolute;
+}
+
+.tapeView>div.tapeCell>div.data {
+	top: 0px;
+}
+
+.tapeView>div.tapeCell>div.data.data1 {
+	background: black;
+	color: white;
+}
+
+.tapeView>div.tapeCell>div.startFlag {
+	bottom: 0px;
+}
+
+.tapeView>div.tapeCell>div.startFlagOn {
+	background: maroon; /* #ED146F;*/
+	color: white;
+}
+
+.controlArea input {
+	width: 10em;
+	background: none;
+	border: none;
+	border-bottom: thin solid black;
+	text-align: right;
+}
+
+.controlArea input[type="text"] {
+	width: 9em;
+	margin-right: 1em;
+}
+
+#instructions {
+	flex: 1 1 auto;
+}
+
+#compilerOut, #instructions{
+	box-sizing: border-box;
+	margin: 0 0 5px;
+}
+
+#btnRun {
+	width: 60%;
+	width: calc(70% - 5px);
+	margin-right: 5px;
+}
+#btnGraphViz {
+	width: 30%;
+}
+
+#runtimeOut {
+	margin-bottom: 3px;
+	padding-left: 5px;
+	border: solid thin darkgrey;
+}
+
+.runtimeReady {
+	background: white;
+}
+
+.runtimeGood {
+	background: #89EA3A;
+}
+
+.runtimeError {
+	background: #FF7BBF;
+}

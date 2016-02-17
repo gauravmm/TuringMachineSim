@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Turing Machine</title>
+  <meta name="description" content="Turing Machine Simulator">
+  <meta name="author" content="Gaurav Manek">
+
+  <link rel="stylesheet" href="style.css?v=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body onload="start()">
+  <div class="container">
+    <div class="outputArea">
+    	<div id="header" contentrole="header">
+    		<h1>Turing Machine Simulator</h1>
+    		<small>&copy; <a href="http://www.gauravmanek.com">Gaurav Manek</a> <time datetime="2016">2016</time></small>
+    	</div>
+    	
+  		<div id="tapeStart" class="tapeView"></div>
+  		<div id="tapeRun" class=""></div>
+	</div>
+    <div class="controlArea">
+    	<h3>Populate</h3>
+    	<div><input type="number" value="32" id="tapeLen" onchange="tapeLenChange()" /> Visible Length</div>
+    	<!-- <div><input type="number" value="1" id="tapeStartPos" onchange="startPosChange()" /> Starting Position</div> -->
+    	<div><input type="number" value="100" id="iterationCount" onchange="itrCountChange()" /> Maximum Iterations</div>
+    	<div><input type="text" value="5, 3" id="tapeContentsStd" /><button onclick="tapeContentsChange()">&larr;</button> Standard Format</div>
+    	<h3>State/Transition Quads</h3>
+    	<div id="runtimeOut" class="runtimeReady">Press Run to start.</div>
+    	<textarea id="instructions">// The first state specified is the starting state.
+q1,0,1,q2 // Write a 1
+q2,1,r,q1 // Then move right, repeating
+q1,1,1,H  // Stop when you encounter a 1.
+// Any state without any transitions specified is treated as a halting state.
+// States with only a single transition specified will throw an error if the machine reaches the unspecified state.
+
+// One 4-tuple per line, comments anywhere after the tuple or on blank lines.</textarea>
+    	<div>
+    	<button id="btnRun" onclick="run()">Run</button><button id="btnGraphViz" onclick="graphViz()">GraphViz</button>
+    	</div>
+	</div>
+  </div>
+</div>  
+
+<script src="script.js"></script>
+<script src="turingmachine.js"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-20172505-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+</body>
+</html>
