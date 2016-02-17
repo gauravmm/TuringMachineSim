@@ -108,6 +108,7 @@ function tapeContentsChange() {
 			nArr[0] = nArr[0] - 1;
 			inpTape[i].innerHTML = "1";
 		}
+		inpTape[i].className = "data " + ((inpTape[i].innerHTML == "1")?" data1":"");
 		i++;
 	}
 
