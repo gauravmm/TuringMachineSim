@@ -19,19 +19,32 @@ a:hover {
 	text-decoration: none;
 }
 
-
-
 .container {
 }
 
 #header {
 	position: relative;
+	height: 80px;
+	height: (4rem + 7px);
+	margin-bottom: 21px;
+
+	padding-left: 34px;
+	padding-left: calc(4rem + 0.5em);
 }
 #header>h1 {
 	display: inline-block;
 }
-#header>small {
+
+#header>.links {
 	display: inline-block;
+	
+	position: absolute;
+	right: 17px;
+	right: calc(10px + 1em);
+	bottom: 7px;
+}
+.links>small {
+	display: block;
 }
 
 .outputArea {
@@ -113,7 +126,7 @@ a:hover {
 	width: 4rem;
 
 	text-align: right;
-	border: solid thin white;
+	border: solid thin rgba(0,0,0,0);
 	position: relative;
 	vertical-align: top;
 	padding-right: 5px;
@@ -121,39 +134,44 @@ a:hover {
 	color: grey;
 }
 
-#tapeStart.tapeView>div.tapeCell {
+#tapeStart.tapeView>.tapeCell {
 	cursor:pointer;
 }
 
-.tapeView>div.tapeCell {
+.tapeCell {
 	height: 2em;
 	display: inline-block;
 	border: thin solid black;
+	border-right: none;
 	vertical-align: top;
 	
 	position: relative;
 }
 
-.tapeView>div.tapeCell>div {
+.tapeCell:last-of-type {
+	border-right: thin solid black;
+}
+
+.tapeCell>div {
 	text-align: center;
 	height: 1em;
 	position: absolute;
 }
 
-.tapeView>div.tapeCell>div.data {
+.tapeCell>div.data {
 	top: 0px;
 }
 
-.tapeView>div.tapeCell>div.data.data1 {
+.tapeCell>div.data.data1 {
 	background: black;
 	color: white;
 }
 
-.tapeView>div.tapeCell>div.startFlag {
+.tapeCell>div.startFlag {
 	bottom: 0px;
 }
 
-.tapeView>div.tapeCell>div.startFlagOn {
+.tapeCell>div.startFlagOn {
 	background: maroon; /* #ED146F;*/
 	color: white;
 }
