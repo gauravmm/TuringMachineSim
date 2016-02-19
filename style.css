@@ -134,7 +134,8 @@ a:hover {
 	color: grey;
 }
 
-#tapeStart.tapeView>.tapeCell {
+#tapeStart.tapeView>.tapeCell,
+.startFlagOn {
 	cursor:pointer;
 }
 

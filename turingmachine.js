@@ -207,7 +207,7 @@ function RunTuringMachine(m, tape, st, cb, params) {
 
 		st = act.next;
 
-		cb({last_action: act.todo, state: st, tape_state: tape, step: i});
+		cb({last_action: act.todo, state: st, tape_state: tape, step: i, source: act.source});
 	}
 
 	return {success: true, message:"Run for " + i + " iterations."};

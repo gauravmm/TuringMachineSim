@@ -127,7 +127,7 @@ function getTapeContents() {
 	return Tape(data, currStartingPos);
 }
 
-function addTapeState(tape, state, i) {
+function addTapeState(tape, state, i, source) {
 	var newRow = document.createElement("div");
 	newRow.className = "tapeView";
 	var before = Math.floor(TAPE_LEN/2);
@@ -158,6 +158,9 @@ function addTapeState(tape, state, i) {
 			var startFlag = document.createElement("div");
 			startFlag.className = "startFlag startFlagOn";
 			startFlag.innerHTML = state;
+			startFlag.onclick = function() {
+				setSourceFocus(source);
+			}
 			wrap.appendChild(startFlag);
 		}
 
@@ -175,13 +178,17 @@ function clearOutput() {
 	}
 }
 
+function setSourceFocus(v) {
+	$('instructions').selectionStart = v[0];
+	$('instructions').selectionEnd = v[1];
+	$('instructions').focus();
+}
+
 function parseMachine() {
 	var t = TuringMachineFromSpec($('instructions').value);
 
 	if(!t.success){
-		$('instructions').selectionStart = t.start;
-		$('instructions').selectionEnd = t.end;
-		$('instructions').focus();
+		setSourceFocus([t.start, t.end]);
 
 		$('runtimeOut').className = "runtimeError";
 		$('runtimeOut').innerHTML = t.error;
@@ -202,7 +209,7 @@ function run() {
 	
 	// callback({last_action, state, tape_state, step})
 	var rv = RunTuringMachine(t.machine, tp, t.startState, function(update) {
-		addTapeState(update.tape_state, update.state, update.step + 1);
+		addTapeState(update.tape_state, update.state, update.step + 1, update.source);
 	}, {limit: itrLimit});
 
 	$('runtimeOut').className = (rv.success)?"runtimeGood":"runtimeError";
