@@ -181,6 +181,7 @@ function parseMachine() {
 	if(!t.success){
 		$('instructions').selectionStart = t.start;
 		$('instructions').selectionEnd = t.end;
+		$('instructions').focus();
 
 		$('runtimeOut').className = "runtimeError";
 		$('runtimeOut').innerHTML = t.error;
@@ -193,12 +194,12 @@ function parseMachine() {
 
 function run() {
 	var t = parseMachine();
+	clearOutput();
 	if (!t)
 		return;
 
 	var tp = getTapeContents();
 	
-	clearOutput();
 	// callback({last_action, state, tape_state, step})
 	var rv = RunTuringMachine(t.machine, tp, t.startState, function(update) {
 		addTapeState(update.tape_state, update.state, update.step + 1);
@@ -211,10 +212,10 @@ function run() {
 
 function graphViz() {
 	var t = parseMachine();
+	clearOutput();
 	if (!t)
 		return;
 	
-	clearOutput();
 
 	var gvDoc = "rankdir=LR;\n";
 	gvDoc += "node [shape = doublecircle] " + t.haltingStates.join(" ") + ";\n";
