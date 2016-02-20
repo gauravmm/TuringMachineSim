@@ -1,4 +1,4 @@
-var TAPE_LEN = 32;
+var TAPE_LEN = 35;
 var inpTape = [];
 var inpTapeWrap = [];
 var currStartingPos = 0;
