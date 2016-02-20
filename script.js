@@ -114,6 +114,7 @@ function tapeContentsChange() {
 
 	while(i < TAPE_LEN) {
 		inpTape[i].innerHTML = "0";
+		inpTape[i].className = "data";
 		i++;
 	}
 
